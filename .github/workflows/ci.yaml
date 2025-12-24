@@ -1,0 +1,13 @@
+name: CI-ECR-Push
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  call-reusable-workflow:
+    uses: mandoofu/kyeol-cicd-actions/.github/workflows/reusable-ecr-push.yml@main
+    with:
+      ecr_repository: kyeol-nimara
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_ECR_PUSH }}
